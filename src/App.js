@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { ND, NDP, NE, NL, NP, VAL, X, Y } from './utils/inputData';
 import laplaceFiniteElements from './utils/laplaceFiniteElements';
+import GraphPoint from './components/GraphPoint';
 import { 
   Container, 
   GraphContainer, 
@@ -9,7 +10,6 @@ import {
   TriangleUp, 
   TriangleRight, 
   HorizontalLine,
-  GraphPoint
 } from './styles';
 
 function App() {
@@ -33,14 +33,14 @@ function App() {
       <GraphContainer>
         <VerticalLine>
           <TriangleUp />
-          <p>Y</p>
+          <strong>Y</strong>
         </VerticalLine>
         <HorizontalLine>
           <TriangleRight />
-          <p>X</p>
+          <strong>X</strong>
         </HorizontalLine>
         {points.length !== 0 && points.map((item, index) => (
-          <GraphPoint key={index}  x={item.x*450+4.5} y={item.y*450+4.5}/>
+          <GraphPoint key={index} data={item} />
         ))}
       </GraphContainer>
     </Container>

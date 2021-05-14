@@ -141,8 +141,8 @@ const laplaceFiniteElements = (
 
   for (let i = 0; i < numberOfNodes; i+=1) {
     answerArr.push({
-      x: xCoordinateForNodesMatrix[i],
-      y: yCoordinatesForNodesMatrix[i],
+      X: xCoordinateForNodesMatrix[i],
+      Y: yCoordinatesForNodesMatrix[i],
       potential: V[i],
     })
   }

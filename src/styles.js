@@ -10,11 +10,12 @@ export const Container = styled.main`
 
 export const GraphContainer = styled.div`
   display: flex;
-  width: 550px;
-  height: 550px;
+  min-width: 500px;
+  min-height: 500px;
   position: relative;
   background-color: #eeeeee;
   margin-top: 100px;
+  outline: 50px solid #eeeeee;
 `;
 
 export const VerticalLine = styled.div`
@@ -25,7 +26,7 @@ export const VerticalLine = styled.div`
   bottom: 10px;
   background-color: #050505;
 
-  > p {
+  > strong {
     position: absolute;
     top: -20px;
     left: -5px;
@@ -40,7 +41,7 @@ export const HorizontalLine = styled.div`
   bottom: 10px;
   background-color: #050505;
 
-  > p {
+  > strong {
     position: absolute;
     right: -20px;
     bottom: -5px;
@@ -68,14 +69,4 @@ export const TriangleRight = styled.div`
   right: -2px;
   bottom: -8.5px;
   transform: rotate(90deg);
-`;
-
-export const GraphPoint = styled.div`
-  position: absolute;
-  background-color: #239393;
-  width: 16px;
-  height: 16px;
-  border-radius: 8px;
-  bottom: ${({ y }) => y}px;
-  left: ${({ x }) => x}px;
 `;
