@@ -2,10 +2,49 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   position: relative;
   min-height: 100vh;
+`;
+
+export const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 50px;
+`;
+
+export const InformationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  padding: 15px;
+
+  > h2 {
+    margin-bottom: 10px;
+  }
+
+  > div { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80px;
+    margin-bottom: 5px;
+
+    > label {
+      margin-right: 10px;
+    }
+
+    > input {
+      width: 50px;
+    }
+  }
 `;
 
 export const GraphContainer = styled.div`
@@ -14,8 +53,8 @@ export const GraphContainer = styled.div`
   min-height: 500px;
   position: relative;
   background-color: #eeeeee;
-  margin-top: 100px;
   outline: 50px solid #eeeeee;
+  margin-top: 50px;
 `;
 
 export const VerticalLine = styled.div`

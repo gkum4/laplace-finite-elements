@@ -5,6 +5,8 @@ import laplaceFiniteElements from './utils/laplaceFiniteElements';
 import GraphPoint from './components/GraphPoint';
 import { 
   Container, 
+  Section,
+  InformationContainer,
   GraphContainer, 
   VerticalLine, 
   TriangleUp, 
@@ -13,6 +15,8 @@ import {
 } from './styles';
 
 function App() {
+  const [pointX, setPointX] = useState('');
+  const [pointY, setPointY] = useState('');
   const [points, setPoints] = useState([]);
 
   useEffect(() => {
@@ -30,19 +34,36 @@ function App() {
 
   return (
     <Container>
-      <GraphContainer>
-        <VerticalLine>
-          <TriangleUp />
-          <strong>Y</strong>
-        </VerticalLine>
-        <HorizontalLine>
-          <TriangleRight />
-          <strong>X</strong>
-        </HorizontalLine>
-        {points.length !== 0 && points.map((item, index) => (
-          <GraphPoint key={index} data={item} />
-        ))}
-      </GraphContainer>
+      {/* <Section>
+        <InformationContainer>
+          <h2>Digite aqui um ponto para descobrir seu potencial:</h2>
+          <div>
+            <label>X:</label>
+            <input value={pointX} type="number" onChange={(e) => setPointX(e.target.value)} />
+          </div>
+          <div>
+            <label>Y:</label>
+            <input value={pointY} type="number" onChange={(e) => setPointY(e.target.value)} />
+          </div>
+          <button type="button">Verificar</button>
+        </InformationContainer>
+      </Section> */}
+
+      <Section>
+        <GraphContainer>
+          <VerticalLine>
+            <TriangleUp />
+            <strong>Y</strong>
+          </VerticalLine>
+          <HorizontalLine>
+            <TriangleRight />
+            <strong>X</strong>
+          </HorizontalLine>
+          {points.length !== 0 && points.map((item, index) => (
+            <GraphPoint key={index} data={item} />
+          ))}
+        </GraphContainer>
+      </Section>
     </Container>
   );
 }

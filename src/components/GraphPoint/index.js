@@ -5,7 +5,6 @@ import { Container } from './styles';
 
 const GraphPoint = ({ data }) => {
   const [informationVisible, setInformationVisible] = useState(false);
-  console.log(data)
 
   return (
     <Container 
