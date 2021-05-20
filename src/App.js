@@ -6,7 +6,6 @@ import GraphPoint from './components/GraphPoint';
 import { 
   Container, 
   Section,
-  InformationContainer,
   GraphContainer, 
   VerticalLine, 
   TriangleUp, 
@@ -15,8 +14,6 @@ import {
 } from './styles';
 
 function App() {
-  const [pointX, setPointX] = useState('');
-  const [pointY, setPointY] = useState('');
   const [points, setPoints] = useState([]);
 
   useEffect(() => {
@@ -34,21 +31,6 @@ function App() {
 
   return (
     <Container>
-      {/* <Section>
-        <InformationContainer>
-          <h2>Digite aqui um ponto para descobrir seu potencial:</h2>
-          <div>
-            <label>X:</label>
-            <input value={pointX} type="number" onChange={(e) => setPointX(e.target.value)} />
-          </div>
-          <div>
-            <label>Y:</label>
-            <input value={pointY} type="number" onChange={(e) => setPointY(e.target.value)} />
-          </div>
-          <button type="button">Verificar</button>
-        </InformationContainer>
-      </Section> */}
-
       <Section>
         <GraphContainer>
           <VerticalLine>
@@ -60,7 +42,7 @@ function App() {
             <strong>X</strong>
           </HorizontalLine>
           {points.length !== 0 && points.map((item, index) => (
-            <GraphPoint key={index} data={item} />
+            <GraphPoint key={index} data={Object.assign(item, {node: index+1})} />
           ))}
         </GraphContainer>
       </Section>

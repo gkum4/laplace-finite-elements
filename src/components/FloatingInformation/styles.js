@@ -6,10 +6,10 @@ export const Container = styled.div`
   background: #CFCFCF;
   padding: 5px;
   position: absolute;
-  top: -85px;
-  left: -5px;
+  top: -99px;
+  left: 0px;
   width: 150px;
-  height: 70px;
+  height: 80px;
   justify-content: center;
   z-index: 10;
 

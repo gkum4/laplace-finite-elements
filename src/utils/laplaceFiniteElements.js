@@ -108,26 +108,27 @@ const laplaceFiniteElements = (
     // iteração com os nós do triângulo
     for (let j = 0; j < 3; j+=1) {
       const IR = elementNodesMatrix[i][j]-1; // numeração do nó do triângulo (ex.: 7)
-      let IFLAG1 = 0;
+      let IRIsFixNode = 0;
 
       // iteração com todos os nós fixos (potencial pré estabelecido)
       for (let k = 0; k < numberOfFixNodes; k+=1) {
 
         // condicional para verificar se nó pertence ao grupo dos nós fixos
         if (IR === nodesWithPreEstablishedPotentialNumbersMatrix[k]-1) {
+          // já que o nó é pré estabelecido, podemos colocar como sendo 1.0 o valor do coeficiente de rigidez global
           globalRigidityMatrix[IR][IR] = 1.0;
           rightSideMatrix[IR] = potentialForPreEstablishedValuesMatrix[k];
-          IFLAG1 = 1;
+          IRIsFixNode = 1;
         }
       }
 
       // condicional para caso o nó IR não for um nó fixo
-      if (IFLAG1 === 0) {
+      if (IRIsFixNode === 0) {
 
         // iteração com os nós do triângulo
         for (let l = 0; l < 3; l+=1) {
           const IC = elementNodesMatrix[i][l]-1; // numeração do nó do triângulo (ex.: 7)
-          let IFLAG2 = 0;
+          let ICIsFixNode = 0;
 
           // iteração com todos os nós fixos (potencial pré estabelecido)
           for (let k = 0; k < numberOfFixNodes; k+=1) {
@@ -137,12 +138,12 @@ const laplaceFiniteElements = (
               
               // subtrai da matriz B no ponto de IR o valor do potencial pré estabelecido vezes o coeficiente local
               rightSideMatrix[IR] = rightSideMatrix[IR] - coeficientMatrix[j][l] * potentialForPreEstablishedValuesMatrix[k];
-              IFLAG2 = 1;
+              ICIsFixNode = 1;
             }
           }
 
           // condicional para caso o nó IC não for um nó fixo
-          if (IFLAG2 === 0) {
+          if (ICIsFixNode === 0) {
             globalRigidityMatrix[IR][IC] = globalRigidityMatrix[IR][IC] + coeficientMatrix[j][l];
           }
         }
@@ -150,6 +151,7 @@ const laplaceFiniteElements = (
     }
   }
 
+  // Multiplicação da matriz de rigidez global inversa com a matriz B
   let V = multiply(inv(globalRigidityMatrix), rightSideMatrix);
   V = V.map(item => item.toFixed(4));
 
